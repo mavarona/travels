@@ -6,13 +6,19 @@ const Comment = require('../models/Comments');
 
 module.exports = function() {
     router.get('/', (req, res) => {
-        Travel.findAll({
-                limit: 3
-            })
-            .then(travels => {
+        const promises = [];
+        promises.push(Travel.findAll({
+            limit: 3
+        }));
+        promises.push(Comment.findAll({
+            limit: 3
+        }));
+        const results = Promise.all(promises);
+        results.then(result => {
                 res.render('index', {
                     page: 'Próximos Viajes',
-                    travels,
+                    travels: result[0],
+                    comments: result[1],
                     className: 'home'
                 });
             })
