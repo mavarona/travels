@@ -1,0 +1,15 @@
+extends ../layout/index
+block content
+    main.container.mt-5
+        .row
+            .col-md-5
+                img(src=`/img/destinos_${travel.img}_ln.jpg`, class="img-fluid")
+            .col-md-7
+                h1 #{travel.title}
+                p 
+                    i.fas.fa-calendar-alt
+                    |  #{travel.date_from} -  #{travel.date_to}
+                p 
+                    | #{travel.price} 
+                    i.fas.fa-euro-sign
+                p= travel.description

@@ -24,7 +24,15 @@ module.exports = function() {
             })
             .catch(err => console.log('\x1b[36m%s\x1b[0m', err));
     });
-
+    router.get('/travels/:id', (req, res) => {
+        Travel.findByPk(req.params.id)
+            .then(travel => {
+                res.render('travel', {
+                    travel
+                });
+            })
+            .catch(err => console.log('\x1b[36m%s\x1b[0m', err));
+    });
 
     return router;
 }
