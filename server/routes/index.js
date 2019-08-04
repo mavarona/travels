@@ -6,9 +6,17 @@ const Comment = require('../models/Comments');
 
 module.exports = function() {
     router.get('/', (req, res) => {
-        res.render('index', {
-            page: 'Agencia de viajes'
-        });
+        Travel.findAll({
+                limit: 3
+            })
+            .then(travels => {
+                res.render('index', {
+                    page: 'Próximos Viajes',
+                    travels,
+                    className: 'home'
+                });
+            })
+            .catch(err => console.log('\x1b[41m%s\x1b[0m', err));
     });
     router.get('/about', (req, res) => {
         res.render('about', {

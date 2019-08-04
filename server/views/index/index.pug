@@ -1,3 +1,24 @@
 extends ../layout/index
+block slider
+    .slider
+        h1 Rio de Janeiro
+        em aventura
 block content
-    h1 Agencia de viajes
+    main.container.mt-5
+        h2.text-center.mb-5 Sobre Nosotros
+        .row.mb-5
+            .col-md-6
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper libero ligula, nec pharetra eros porta nec. Aliquam mattis nibh eu dui semper mattis. Nulla luctus massa leo, et vehicula nulla gravida ac. Praesent porta tincidunt justo id sagittis. In in felis eu ex fringilla venenatis. Proin ac hendrerit dolor. Maecenas a ipsum a ex mollis imperdiet ac a lacus. Cras ut bibendum libero.
+                p In hac habitasse platea dictumst. Morbi vestibulum commodo sodales. Cras posuere turpis nibh, a posuere nunc vulputate et. Praesent nec purus molestie, vehicula ipsum non, imperdiet sapien. Vivamus massa nisi, dapibus in scelerisque ac, suscipit quis felis. Integer non erat non dui sollicitudin sodales sollicitudin at dolor. Aenean porta porttitor est tincidunt fringilla.
+            .col-md-6
+                img(src="/img/inicio_nosotros.jpg", class="img-fluid")
+        include ../layout/partials/travels
+    .descuento
+        .container
+            .row
+                .col-md-6
+                    .contenido
+                        h3 10% de descuento
+                        p.titulo Viaje a Cánada
+                        p.fecha 20 de Agosto de 2019 a 28 de Agosto de 2019
+                        p.precio 2500 €
