@@ -19,6 +19,7 @@ app.locals.title = config.nameSite;
 app.use((req, res, next) => {
     const date = new Date();
     res.locals.currentYear = date.getFullYear();
+    res.locals.pathPage = req.path;
     return next();
 });
 
