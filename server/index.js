@@ -5,6 +5,12 @@ const routes = require('./routes');
 
 const configs = require('./config');
 
+const db = require('./config/database');
+
+db.authenticate()
+    .then(() => console.log('\x1b[36m%s\x1b[0m', 'Connected to database travelAgency'))
+    .catch(err => console.log('\x1b[36m%s\x1b[0m', err));
+
 const app = express();
 
 app.set('view engine', 'pug');
