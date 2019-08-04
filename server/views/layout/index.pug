@@ -7,7 +7,8 @@ html(lang='en')
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
         link(href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Open+Sans:400,700|Staatliches&display=swap', rel='stylesheet')
         link(rel="stylesheet", href="/css/style.css")
-        title Agencia de Viajes
+        title #{title} | #{page}
     body
         include includes/header
         block content
+        include includes/footer
