@@ -1,0 +1,19 @@
+extends ../layout/index
+block content
+    main.container.mt-5
+        h1.text-center.mb-5 #{page}
+        .row.proximos-viajes
+            each travel in travels
+                .col-md-6.col-lg-4.mb-4
+                    .card
+                        img(src=`img/destinos_${travel.img}.jpg`, class="img-fluid")
+                        .card-body
+                            h2= travel.title
+                            p 
+                                i.fas.fa-calendar-alt
+                                |  #{travel.date_from} -  #{travel.date_to}
+                            p 
+                                | #{travel.price} 
+                                i.fas.fa-euro-sign
+                            p= travel.description.substring(0,100)
+                            a(href=`travels/${travel.id}`, class="btn btn-success btn-block") Más Información               
