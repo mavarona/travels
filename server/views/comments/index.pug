@@ -1,0 +1,35 @@
+extends ../layout/index
+block content
+    main.container.mt-5
+        h1.text-center.mb-5 #{page}
+        .row
+            .col-md-12
+                blockquote.text-center Lee sobre las experiencias de nuestros clientes
+                .row.testimoniales
+                    each comment in comments
+                        .col-md-6.col-lg-4.mb-4
+                            .card
+                                .card-body
+                                    blockquote.blockquote
+                                        p.mb-0
+                                            | #{comment.message}
+                                    footer.blockquote-footer
+                                        | #{comment.name}
+            .col-md-12
+                h2.text-center Añada un Comentario
+                if(errors)
+                    each error in errors
+                        .alert.alert-danger.text-center=error.message
+                .row.justify-content-center
+                    .col-md-8
+                        form(action="/comments", method="POST")
+                            .form-group
+                                label(for="name") Nombre
+                                input(id="name", type="text", name="name", placeholder="Nombre", class="form-control", value=name)
+                            .form-group
+                                label(for="email") Correo Eléctronico
+                                input(id="email", type="email", name="email", placeholder="Correo Electrónico", class="form-control", value=email)
+                            .form-group
+                                label(for="message") Mensaje
+                                textarea#message(name="message", rows="3", placeholder="Mensaje", class="form-control", value=message)
+                            input.btn.btn-success.btn-block(type="submit", value="Añadir")
