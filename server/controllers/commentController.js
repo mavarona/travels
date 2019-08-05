@@ -1,17 +1,13 @@
 const Comment = require('../models/Comments');
 
-exports.showComments = (req, res) => {
-    Comment.findAll()
-        .then(comments => {
-            res.render('comments', {
-                page: 'Comentarios',
-                comments
-            });
-        })
-        .catch(err => console.log('\x1b[41m%s\x1b[0m', err));
+exports.showComments = async(req, res) => {
+    const comments = await Comment.findAll();
+    res.render('comments', {
+        page: 'Comentarios',
+        comments
+    });
 }
-
-exports.addComment = (req, res) => {
+exports.addComment = async(req, res) => {
     const { name, email, message } = req.body;
     let errors = [];
     if (!name) {
@@ -24,11 +20,14 @@ exports.addComment = (req, res) => {
         errors.push({ message: 'Añade un mensaje' });
     }
     if (errors.length > 0) {
+        const comments = await Comment.findAll();
         res.render('comments', {
             errors,
             name,
             email,
-            message
+            message,
+            page: 'Comentarios',
+            comments
         });
     } else {
         Comment.create({

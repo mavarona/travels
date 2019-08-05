@@ -1,22 +1,16 @@
 const Travel = require('../models/Travels');
 
-exports.showTravels = (req, res) => {
-    Travel.findAll()
-        .then(travels => {
-            res.render('travels', {
-                page: 'Próximos Viajes',
-                travels
-            });
-        })
-        .catch(err => console.log('\x1b[41m%s\x1b[0m', err));
+exports.showTravels = async(req, res) => {
+    const travels = await Travel.findAll();
+    res.render('travels', {
+        page: 'Próximos Viajes',
+        travels
+    });
 }
 
-exports.showTravel = (req, res) => {
-    Travel.findByPk(req.params.id)
-        .then(travel => {
-            res.render('travel', {
-                travel
-            });
-        })
-        .catch(err => console.log('\x1b[41m%s\x1b[0m', err));
+exports.showTravel = async(req, res) => {
+    const travel = await Travel.findByPk(req.params.id);
+    res.render('travel', {
+        travel
+    });
 }
