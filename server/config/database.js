@@ -1,8 +1,9 @@
 const Sequalize = require('sequelize');
+require('dotenv').config({ path: 'variables.env' })
 
-module.exports = new Sequalize('travelAgency', 'root', 'root', {
-    host: '127.0.0.1',
-    port: '8889',
+module.exports = new Sequalize(process.env.BD_NAME, process.env.BD_USER, process.env.BD_PASS, {
+    host: process.env.BD_HOST,
+    port: process.env.BD_PORT,
     dialect: 'mysql',
     define: {
         timestamps: false
